@@ -1,0 +1,13 @@
+name: har
+version: 0.1.0
+
+authors:
+  - Bar Hofesh <bar.hofesh@gmail.com>
+
+targets:
+  har:
+    main: src/har.cr
+
+crystal: 0.24.2
+
+license: MIT

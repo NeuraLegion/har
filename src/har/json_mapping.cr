@@ -105,7 +105,7 @@ module HAR
       value: String,
       path: String?,
       domain: String?,
-      expires: String,
+      expires: String?,
       httpOnly: Bool?,
       secure: Bool?,
       comment: String?,

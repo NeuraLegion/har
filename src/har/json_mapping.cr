@@ -77,7 +77,7 @@ module HAR
       headers: Array(Header),
       queryString: Array(QueryString),
       postData: PostData?,
-      headersSize: Int32,
+      headersSize: Int32?,
       bodySize: Int32?,
       comment: String?
     )
@@ -92,7 +92,7 @@ module HAR
       headers: Array(Header),
       content: Content,
       redirectURL: String,
-      headersSize: Int32,
+      headersSize: Int32?,
       bodySize: Int32?,
       comment: String?,
     )

@@ -183,7 +183,7 @@ module HAR
       connect: Int32? | Float32? | Float64?,
       send: Int32? | Float32? | Float64?,
       wait: Int32? | Float32? | Float64?,
-      receive: Int32,
+      receive: Int32 | Float64 | Float32,
       ssl: Int32? | Float32? | Float64?,
       comment: String?
     )

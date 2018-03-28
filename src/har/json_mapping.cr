@@ -178,13 +178,13 @@ module HAR
 
   class Timings
     JSON.mapping(
-      blocked: Int32?,
-      dns: Int32?,
-      connect: Int32?,
-      send: Int32,
-      wait: Int32,
+      blocked: Int32? | Float32? | Float64?,
+      dns: Int32? | Float32? | Float64?,
+      connect: Int32? | Float32? | Float64?,
+      send: Int32? | Float32? | Float64?,
+      wait: Int32? | Float32? | Float64?,
       receive: Int32,
-      ssl: Int32?,
+      ssl: Int32? | Float32? | Float64?,
       comment: String?
     )
   end

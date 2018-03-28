@@ -47,8 +47,8 @@ module HAR
 
   class PageTimings
     JSON.mapping(
-      onContentLoad: Int32?,
-      onLoad: Int32?,
+      onContentLoad: Int32? | Float32? | Float64?,
+      onLoad: Int32? | Float32? | Float64?,
       comment: String?,
     )
   end

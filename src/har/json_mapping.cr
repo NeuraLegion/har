@@ -57,7 +57,7 @@ module HAR
     JSON.mapping(
       pageref: String?,
       startedDateTime: String,
-      time: Int32?,
+      time: Int32? | Float32? | Float64?,
       request: Request,
       response: Response,
       cache: Cache,

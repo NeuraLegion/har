@@ -131,7 +131,7 @@ module HAR
   class PostData
     JSON.mapping(
       mimeType: String,
-      params: Array(Param),
+      params: Array(Param)?,
       text: String,
       comment: String?
     )

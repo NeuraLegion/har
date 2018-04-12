@@ -130,7 +130,7 @@ module HAR
 
   class PostData
     JSON.mapping(
-      mimeType: String,
+      mimeType: String?,
       params: Array(Param)?,
       text: String,
       comment: String?
@@ -151,7 +151,7 @@ module HAR
     JSON.mapping(
       size: Int32,
       compression: Int32?,
-      mimeType: String,
+      mimeType: String?,
       text: String?,
       encoding: String?,
       comment: String?,

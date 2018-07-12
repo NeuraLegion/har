@@ -149,7 +149,7 @@ module HAR
 
   class Content
     JSON.mapping(
-      size: Int32,
+      size: Int32?,
       compression: Int32?,
       mimeType: String?,
       text: String?,

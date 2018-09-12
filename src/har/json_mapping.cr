@@ -79,7 +79,8 @@ module HAR
       postData: PostData?,
       headersSize: Int32?,
       bodySize: Int32?,
-      comment: String?
+      comment: String?,
+      fragments: Array(String)?
     )
   end
 

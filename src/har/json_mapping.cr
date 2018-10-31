@@ -60,7 +60,7 @@ module HAR
       time: Int32? | Float32? | Float64?,
       request: Request,
       response: Response,
-      cache: Cache,
+      cache: Cache?,
       timings: Timings,
       serverIPAddress: String?,
       connection: String?,

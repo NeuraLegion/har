@@ -61,7 +61,7 @@ module HAR
       request: Request,
       response: Response,
       cache: Cache?,
-      timings: Timings?,
+      timings: Timings? | Array(String)?,
       serverIPAddress: String?,
       connection: String?,
       comment: String?

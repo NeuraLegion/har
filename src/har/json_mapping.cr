@@ -61,7 +61,7 @@ module HAR
       request: Request,
       response: Response,
       cache: Cache?,
-      timings: Timings? | Array(String)? | Hash(String, String)?,
+      timings: Timings? | Array(String)?,
       serverIPAddress: String?,
       connection: String?,
       comment: String?
@@ -184,7 +184,7 @@ module HAR
       connect: Int32? | Float32? | Float64?,
       send: Int32? | Float32? | Float64?,
       wait: Int32? | Float32? | Float64?,
-      receive: Int32 | Float64 | Float32,
+      receive: Int32? | Float64? | Float32?,
       ssl: Int32? | Float32? | Float64?,
       comment: String?
     )

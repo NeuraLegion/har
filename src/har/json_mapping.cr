@@ -37,7 +37,7 @@ module HAR
 
   class Pages
     JSON.mapping(
-      startedDateTime: String,
+      startedDateTime: String?,
       id: String,
       title: String,
       pageTimings: PageTimings,
@@ -56,7 +56,7 @@ module HAR
   class Entries
     JSON.mapping(
       pageref: String?,
-      startedDateTime: String,
+      startedDateTime: String?,
       time: Int32? | Float32? | Float64?,
       request: Request,
       response: Response,

@@ -90,8 +90,9 @@ module HAR
     property connection : String?
     property comment : String?
 
-    def initialize(@request : Request, @response : Response)
+    def initialize(@request : Request, @response : Response, @time = -1)
       @startedDateTime = Time.now.to_rfc3339
+      @timings = Timings.new
     end
   end
 

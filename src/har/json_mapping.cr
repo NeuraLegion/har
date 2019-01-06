@@ -48,6 +48,11 @@ module HAR
     property name : String
     property version : String
     property comment : String?
+
+    def initialize
+      @name = "Crystal HAR"
+      @version = HAR::VERSION
+    end
   end
 
   class Pages
@@ -58,6 +63,9 @@ module HAR
     property title : String
     property pageTimings : PageTimings
     property comment : String?
+
+    def initialize(@startedDateTime : String, @id : String, @title : String, @pageTimings : PageTimings = PageTimings.new)
+    end
   end
 
   class PageTimings
@@ -72,7 +80,7 @@ module HAR
     include JSON::Serializable
 
     property pageref : String?
-    property startedDateTime : String
+    property startedDateTime : String?
     property time : Int32? | Float32? | Float64?
     property request : Request
     property response : Response
@@ -81,6 +89,9 @@ module HAR
     property serverIPAddress : String?
     property connection : String?
     property comment : String?
+
+    def initialize(@request : Request, @response : Response)
+    end
   end
 
   class Request
@@ -136,6 +147,9 @@ module HAR
     property httpOnly : Bool?
     property secure : Bool?
     property comment : String?
+
+    def initialize(@name : String, @value : String)
+    end
   end
 
   class Header
@@ -144,6 +158,9 @@ module HAR
     property name : String
     property value : String
     property comment : String?
+
+    def initialize(@name : String, @value : String)
+    end
   end
 
   class QueryString
@@ -152,6 +169,9 @@ module HAR
     property name : String
     property value : String
     property comment : String?
+
+    def initialize(@name : String, @value : String)
+    end
   end
 
   class PostData
@@ -161,6 +181,9 @@ module HAR
     property params : Array(Param)?
     property text : String
     property comment : String?
+
+    def initialize(@text : String)
+    end
   end
 
   class Param
@@ -171,6 +194,9 @@ module HAR
     property fileName : String?
     property contentType : String?
     property comment : String?
+
+    def initialize(@name : String, @value : String? = nil)
+    end
   end
 
   class Content
@@ -200,6 +226,9 @@ module HAR
     property eTag : String
     property hitCount : Int32
     property comment : String?
+
+    def initialize(@lastAccess : String, @eTag : String, @hitCount : Int32)
+    end
   end
 
   class Timings

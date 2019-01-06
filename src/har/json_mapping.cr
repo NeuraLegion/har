@@ -7,8 +7,7 @@ module HAR
 
     property log : Log
 
-    def initialize
-      @log = Log.new
+    def initialize(@log : Log)
     end
   end
 
@@ -26,6 +25,7 @@ module HAR
       @entries = Array(Entries).new
       @version = "1.2"
       @creator = Creator.new
+      @browser = Browser.new
     end
   end
 

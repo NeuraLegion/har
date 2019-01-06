@@ -80,7 +80,7 @@ module HAR
     include JSON::Serializable
 
     property pageref : String?
-    property startedDateTime : String?
+    property startedDateTime : String
     property time : Int32? | Float32? | Float64?
     property request : Request
     property response : Response
@@ -91,6 +91,7 @@ module HAR
     property comment : String?
 
     def initialize(@request : Request, @response : Response)
+      @startedDateTime = Time.now.to_rfc3339
     end
   end
 
@@ -109,7 +110,7 @@ module HAR
     property comment : String?
     property fragments : Array(String)?
 
-    def initialize(@method : String, @url : String, @httpVersion : String)
+    def initialize(@method : String, @url : String, @httpVersion : String, @headersSize : Int32? = -1, @bodySize : Int32? = -1)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
       @queryString = Array(QueryString).new
@@ -130,7 +131,7 @@ module HAR
     property bodySize : Int32?
     property comment : String?
 
-    def initialize(@status : Int32, @statusText : String, @httpVersion : String, @content : Content, @redirectURL : String = "")
+    def initialize(@status : Int32, @statusText : String, @httpVersion : String, @content : Content, @redirectURL : String = "", @headersSize : Int32? = -1, @bodySize : Int32? = -1)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
     end

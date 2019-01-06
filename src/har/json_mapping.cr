@@ -6,6 +6,10 @@ module HAR
     include JSON::Serializable
 
     property log : Log
+
+    def initialize
+      @log = Log.new
+    end
   end
 
   class Log
@@ -17,6 +21,12 @@ module HAR
     property pages : Array(Pages)?
     property comment : String?
     property entries : Array(Entries)
+
+    def initialize
+      @entries = Array(Entries).new
+      @version = "1.2"
+      @creator = Creator.new
+    end
   end
 
   class Creator
@@ -25,6 +35,11 @@ module HAR
     property name : String
     property version : String
     property comment : String?
+
+    def initialize
+      @name = "Crystal HAR"
+      @version = HAR::VERSION
+    end
   end
 
   class Browser
@@ -82,6 +97,12 @@ module HAR
     property bodySize : Int32?
     property comment : String?
     property fragments : Array(String)?
+
+    def initialize(@method : String, @url : String, @httpVersion : String)
+      @cookies = Array(Cookie).new
+      @headers = Array(Header).new
+      @queryString = Array(QueryString).new
+    end
   end
 
   class Response
@@ -97,6 +118,11 @@ module HAR
     property headersSize : Int32?
     property bodySize : Int32?
     property comment : String?
+
+    def initialize(@status : Int32, @statusText : String, @httpVersion : String, @content : Content, @redirectURL : String = "")
+      @cookies = Array(Cookie).new
+      @headers = Array(Header).new
+    end
   end
 
   class Cookie

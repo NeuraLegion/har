@@ -127,7 +127,7 @@ module HAR
     property cookies : Array(Cookie)
     property headers : Array(Header)
     property content : Content
-    property redirectURL : String
+    property redirectURL : String?
     property headersSize : Int32?
     property bodySize : Int32?
     property comment : String?

@@ -181,7 +181,7 @@ module HAR
 
     property mimeType : String?
     property params : Array(Param)?
-    property text : String
+    property text : String?
     property comment : String?
 
     def initialize(@text : String)

@@ -122,7 +122,7 @@ module HAR
     include JSON::Serializable
 
     property status : Int32
-    property statusText : String
+    property statusText : String?
     property httpVersion : String
     property cookies : Array(Cookie)
     property headers : Array(Header)

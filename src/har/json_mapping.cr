@@ -58,13 +58,13 @@ module HAR
   class Pages
     include JSON::Serializable
 
-    property startedDateTime : String
-    property id : String
-    property title : String
-    property pageTimings : PageTimings
+    property startedDateTime : String?
+    property id : String?
+    property title : String?
+    property pageTimings : PageTimings?
     property comment : String?
 
-    def initialize(@startedDateTime : String, @id : String, @title : String, @pageTimings : PageTimings = PageTimings.new)
+    def initialize(@startedDateTime : String?, @id : String?, @title : String?, @pageTimings : PageTimings? = nil)
     end
   end
 

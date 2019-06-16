@@ -92,7 +92,6 @@ module HAR
 
     def initialize(@request : Request, @response : Response, @time = -1)
       @startedDateTime = Time.now.to_rfc3339
-      @timings = Timings.new
     end
   end
 
@@ -210,6 +209,10 @@ module HAR
     property text : String?
     property encoding : String?
     property comment : String?
+
+    def initialize(@text : String?)
+      @size = @text.to_s.size
+    end
   end
 
   class Cache

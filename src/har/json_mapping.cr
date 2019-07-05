@@ -58,21 +58,25 @@ module HAR
   class Pages
     include JSON::Serializable
 
-    property startedDateTime : String?
+    @[JSON::Field(key: "startedDateTime")]
+    property started_date_time : String?
     property id : String?
     property title : String?
-    property pageTimings : PageTimings?
+    @[JSON::Field(key: "pageTimings")]
+    property page_timings : PageTimings?
     property comment : String?
 
-    def initialize(@startedDateTime : String?, @id : String?, @title : String?, @pageTimings : PageTimings? = nil)
+    def initialize(@started_date_time : String?, @id : String?, @title : String?, @page_timings : PageTimings? = nil)
     end
   end
 
   class PageTimings
     include JSON::Serializable
 
-    property onContentLoad : Int32? | Float32? | Float64?
-    property onLoad : Int32? | Float32? | Float64?
+    @[JSON::Field(key: "onContentLoad")]
+    property on_content_load : Int32? | Float32? | Float64?
+    @[JSON::Field(key: "onLoad")]
+    property on_load : Int32? | Float32? | Float64?
     property comment : String?
   end
 
@@ -80,18 +84,20 @@ module HAR
     include JSON::Serializable
 
     property pageref : String?
-    property startedDateTime : String
+    @[JSON::Field(key: "startedDateTime")]
+    property started_date_time : String
     property time : Int32? | Float32? | Float64?
     property request : Request
     property response : Response
     property cache : Cache?
     property timings : Timings? | Array(String)?
-    property serverIPAddress : String?
+    @[JSON::Field(key: "serverIPAddress")]
+    property server_ip_address : String?
     property connection : String?
     property comment : String?
 
     def initialize(@request : Request, @response : Response, @time = -1)
-      @startedDateTime = Time.now.to_rfc3339
+      @started_date_time = Time.now.to_rfc3339
     end
   end
 
@@ -100,20 +106,24 @@ module HAR
 
     property method : String
     property url : String
-    property httpVersion : String
+    @[JSON::Field(key: "httpVersion")]
+    property http_version : String
     property cookies : Array(Cookie)
     property headers : Array(Header)
-    property queryString : Array(QueryString)
+    @[JSON::Field(key: "queryString")]
+    property query_string : Array(QueryString)
     property postData : PostData?
-    property headersSize : Int32?
-    property bodySize : Int32?
+    @[JSON::Field(key: "headersSize")]
+    property headers_size : Int32?
+    @[JSON::Field(key: "bodySize")]
+    property body_size : Int32?
     property comment : String?
     property fragments : Array(String)?
 
-    def initialize(@method : String, @url : String, @httpVersion : String, @headersSize : Int32? = -1, @bodySize : Int32? = -1)
+    def initialize(@method : String, @url : String, @http_version : String, @headers_size : Int32? = -1, @body_size : Int32? = -1)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
-      @queryString = Array(QueryString).new
+      @query_string = Array(QueryString).new
     end
   end
 
@@ -121,17 +131,22 @@ module HAR
     include JSON::Serializable
 
     property status : Int32
-    property statusText : String?
-    property httpVersion : String
+    @[JSON::Field(key: "statusText")]
+    property status_text : String?
+    @[JSON::Field(key: "httpVersion")]
+    property http_version : String
     property cookies : Array(Cookie)
     property headers : Array(Header)
     property content : Content
-    property redirectURL : String?
-    property headersSize : Int32?
-    property bodySize : Int32?
+    @[JSON::Field(key: "redirectURL")]
+    property redirect_url : String?
+    @[JSON::Field(key: "headersSize")]
+    property headers_size : Int32?
+    @[JSON::Field(key: "bodySize")]
+    property body_size : Int32?
     property comment : String?
 
-    def initialize(@status : Int32, @statusText : String, @httpVersion : String, @content : Content, @redirectURL : String = "", @headersSize : Int32? = -1, @bodySize : Int32? = -1)
+    def initialize(@status : Int32, @status_text : String, @http_version : String, @content : Content, @redirect_url : String = "", @headers_size : Int32? = -1, @body_size : Int32? = -1)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
     end
@@ -145,7 +160,8 @@ module HAR
     property path : String?
     property domain : String?
     property expires : String | Hash(String, String) | Nil
-    property httpOnly : Bool?
+    @[JSON::Field(key: "httpOnly")]
+    property http_only : Bool?
     property secure : Bool?
     property comment : String?
 
@@ -178,7 +194,8 @@ module HAR
   class PostData
     include JSON::Serializable
 
-    property mimeType : String?
+    @[JSON::Field(key: "mimeType")]
+    property mime_type : String?
     property params : Array(Param)?
     property text : String?
     property comment : String?
@@ -193,7 +210,8 @@ module HAR
     property name : String
     property value : String?
     property fileName : String?
-    property contentType : String?
+    @[JSON::Field(key: "contentType")]
+    property content_type : String?
     property comment : String?
 
     def initialize(@name : String, @value : String? = nil)
@@ -205,7 +223,8 @@ module HAR
 
     property size : Int32?
     property compression : Int32?
-    property mimeType : String?
+    @[JSON::Field(key: "mimeType")]
+    property mime_type : String?
     property text : String?
     property encoding : String?
     property comment : String?
@@ -218,8 +237,10 @@ module HAR
   class Cache
     include JSON::Serializable
 
-    property beforeRequest : CacheRequest?
-    property afterRequest : CacheRequest?
+    @[JSON::Field(key: "beforeRequest")]
+    property before_request : CacheRequest?
+    @[JSON::Field(key: "afterRequest")]
+    property after_request : CacheRequest?
     property comment : String?
   end
 
@@ -227,12 +248,15 @@ module HAR
     include JSON::Serializable
 
     property expires : String?
-    property lastAccess : String
-    property eTag : String
-    property hitCount : Int32
+    @[JSON::Field(key: "lastAccess")]
+    property last_access : String
+    @[JSON::Field(key: "eTag")]
+    property etag : String
+    @[JSON::Field(key: "hitCount")]
+    property hit_count : Int32
     property comment : String?
 
-    def initialize(@lastAccess : String, @eTag : String, @hitCount : Int32)
+    def initialize(@last_access : String, @etag : String, @hit_count : Int32)
     end
   end
 

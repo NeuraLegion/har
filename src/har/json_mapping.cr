@@ -112,7 +112,8 @@ module HAR
     property headers : Array(Header)
     @[JSON::Field(key: "queryString")]
     property query_string : Array(QueryString)
-    property postData : PostData?
+    @[JSON::Field(key: "postData")]
+    property post_data : PostData?
     @[JSON::Field(key: "headersSize")]
     property headers_size : Int32?
     @[JSON::Field(key: "bodySize")]

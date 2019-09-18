@@ -250,11 +250,11 @@ module HAR
 
     property expires : String? | Bool?
     @[JSON::Field(key: "lastAccess")]
-    property last_access : String
+    property last_access : String?
     @[JSON::Field(key: "eTag")]
-    property etag : String
+    property etag : String? | Bool?
     @[JSON::Field(key: "hitCount")]
-    property hit_count : Int32
+    property hit_count : Int32?
     property comment : String?
 
     def initialize(@last_access : String, @etag : String, @hit_count : Int32)

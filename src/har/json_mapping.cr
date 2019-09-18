@@ -248,7 +248,7 @@ module HAR
   class CacheRequest
     include JSON::Serializable
 
-    property expires : String?
+    property expires : String? | Bool?
     @[JSON::Field(key: "lastAccess")]
     property last_access : String
     @[JSON::Field(key: "eTag")]

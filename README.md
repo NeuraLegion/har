@@ -1,4 +1,4 @@
-# har
+# har [![Build Status](https://travis-ci.com/NeuraLegion/har.svg?branch=master)](https://travis-ci.com/NeuraLegion/har)
 
 HAR parser for version 1.2
 

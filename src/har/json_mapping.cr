@@ -217,7 +217,8 @@ module HAR
 
     property name : String
     property value : String?
-    property fileName : String?
+    @[JSON::Field(key: "fileName")]
+    property file_name : String?
     @[JSON::Field(key: "contentType")]
     property content_type : String?
     property comment : String?

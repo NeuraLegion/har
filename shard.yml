@@ -4,6 +4,10 @@ version: 0.3.0
 authors:
   - Bar Hofesh <bar.hofesh@gmail.com>
 
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.10.0
 
 crystal: 0.28.0
 

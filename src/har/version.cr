@@ -1,3 +1,3 @@
 module HAR
-  VERSION = "0.3.0"
+  VERSION = "1.0.1"
 end

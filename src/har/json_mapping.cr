@@ -74,9 +74,9 @@ module HAR
     include JSON::Serializable
 
     @[JSON::Field(key: "onContentLoad")]
-    property on_content_load : Int32? | Float32? | Float64?
+    property on_content_load : Int32 | Float32 | Float64?
     @[JSON::Field(key: "onLoad")]
-    property on_load : Int32? | Float32? | Float64?
+    property on_load : Int32 | Float32 | Float64?
     property comment : String?
   end
 
@@ -86,11 +86,11 @@ module HAR
     property pageref : String?
     @[JSON::Field(key: "startedDateTime")]
     property started_date_time : String
-    property time : Int32? | Float32? | Float64?
+    property time : Int32 | Float32 | Float64?
     property request : Request
     property response : Response
     property cache : Cache?
-    property timings : Timings? | Array(String)?
+    property timings : Timings | Array(String)?
     @[JSON::Field(key: "serverIPAddress")]
     property server_ip_address : String?
     property connection : String?
@@ -160,7 +160,7 @@ module HAR
     property value : String
     property path : String?
     property domain : String?
-    property expires : String | Hash(String, String) | Nil
+    property expires : String | Hash(String, String)?
     @[JSON::Field(key: "httpOnly")]
     property http_only : Bool?
     property secure : Bool?
@@ -248,11 +248,11 @@ module HAR
   class CacheRequest
     include JSON::Serializable
 
-    property expires : String? | Bool?
+    property expires : String | Bool?
     @[JSON::Field(key: "lastAccess")]
     property last_access : String?
     @[JSON::Field(key: "eTag")]
-    property etag : String? | Bool?
+    property etag : String | Bool?
     @[JSON::Field(key: "hitCount")]
     property hit_count : Int32?
     property comment : String?
@@ -264,13 +264,13 @@ module HAR
   class Timings
     include JSON::Serializable
 
-    property blocked : Int32? | Float32? | Float64?
-    property dns : Int32? | Float32? | Float64?
-    property connect : Int32? | Float32? | Float64?
-    property send : Int32? | Float32? | Float64?
-    property wait : Int32? | Float32? | Float64?
-    property receive : Int32? | Float64? | Float32?
-    property ssl : Int32? | Float32? | Float64?
+    property blocked : Int32 | Float32 | Float64?
+    property dns : Int32 | Float32 | Float64?
+    property connect : Int32 | Float32 | Float64?
+    property send : Int32 | Float32 | Float64?
+    property wait : Int32 | Float32 | Float64?
+    property receive : Int32 | Float64 | Float32?
+    property ssl : Int32 | Float32 | Float64?
     property comment : String?
   end
 end

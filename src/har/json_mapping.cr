@@ -7,7 +7,7 @@ module HAR
 
     property log : Log
 
-    def initialize(@log : Log)
+    def initialize(@log)
     end
   end
 
@@ -66,7 +66,7 @@ module HAR
     property page_timings : PageTimings?
     property comment : String?
 
-    def initialize(@started_date_time : String?, @id : String?, @title : String?, @page_timings : PageTimings? = nil)
+    def initialize(@started_date_time, @id, @title, @page_timings = nil)
     end
   end
 
@@ -96,7 +96,7 @@ module HAR
     property connection : String?
     property comment : String?
 
-    def initialize(@request : Request, @response : Response, @time = -1)
+    def initialize(@request, @response, @time = -1)
       @started_date_time = Time.now.to_rfc3339
     end
   end
@@ -121,7 +121,7 @@ module HAR
     property comment : String?
     property fragments : Array(String)?
 
-    def initialize(@method : String, @url : String, @http_version : String, @headers_size : Int32? = -1, @body_size : Int32? = -1)
+    def initialize(@method, @url, @http_version, @headers_size = -1, @body_size = -1)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
       @query_string = Array(QueryString).new
@@ -133,7 +133,7 @@ module HAR
 
     property status : Int32
     @[JSON::Field(key: "statusText")]
-    property status_text : String?
+    property status_text : String
     @[JSON::Field(key: "httpVersion")]
     property http_version : String
     property cookies : Array(Cookie)
@@ -147,7 +147,14 @@ module HAR
     property body_size : Int32?
     property comment : String?
 
-    def initialize(@status : Int32, @status_text : String, @http_version : String, @content : Content, @redirect_url : String = "", @headers_size : Int32? = -1, @body_size : Int32? = -1)
+    def initialize(
+      @status, @status_text,
+      @http_version,
+      @content,
+      @redirect_url = nil,
+      @headers_size = -1,
+      @body_size = -1
+    )
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
     end
@@ -166,7 +173,7 @@ module HAR
     property secure : Bool?
     property comment : String?
 
-    def initialize(@name : String, @value : String)
+    def initialize(@name, @value)
     end
   end
 
@@ -177,7 +184,7 @@ module HAR
     property value : String
     property comment : String?
 
-    def initialize(@name : String, @value : String)
+    def initialize(@name, @value)
     end
   end
 
@@ -188,7 +195,7 @@ module HAR
     property value : String
     property comment : String?
 
-    def initialize(@name : String, @value : String)
+    def initialize(@name, @value)
     end
   end
 
@@ -201,7 +208,7 @@ module HAR
     property text : String?
     property comment : String?
 
-    def initialize(@text : String)
+    def initialize(@text)
     end
   end
 
@@ -215,7 +222,7 @@ module HAR
     property content_type : String?
     property comment : String?
 
-    def initialize(@name : String, @value : String? = nil)
+    def initialize(@name, @value = nil)
     end
   end
 
@@ -230,7 +237,7 @@ module HAR
     property encoding : String?
     property comment : String?
 
-    def initialize(@text : String?)
+    def initialize(@text)
       @size = @text.to_s.size
     end
   end
@@ -257,7 +264,7 @@ module HAR
     property hit_count : Int32?
     property comment : String?
 
-    def initialize(@last_access : String, @etag : String, @hit_count : Int32)
+    def initialize(@last_access, @etag, @hit_count)
     end
   end
 

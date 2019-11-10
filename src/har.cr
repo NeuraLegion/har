@@ -4,14 +4,11 @@ require "./har/**"
 module HAR
   extend self
 
-  def from_file(file : String) : HAR::Log
-    f = File.open(file)
-    raw = f.gets_to_end
-    f.close
-    from_string(raw)
+  def from_file(file : String) : Log
+    from_string(File.read(file))
   end
 
-  def from_string(string : String) : HAR::Log
-    HAR::Data.from_json(string).log
+  def from_string(string : String) : Log
+    Data.from_json(string).log
   end
 end

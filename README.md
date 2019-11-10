@@ -26,8 +26,8 @@ json.entries
 
 ## Development
 
-Pretty much done.  
-If there is a needed feature please open an issue.  
+Pretty much done.
+If there is a needed feature please open an issue.
 
 ## Contributing
 

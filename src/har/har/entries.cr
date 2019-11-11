@@ -15,7 +15,7 @@ module HAR
     property connection : String?
     property comment : String?
 
-    def initialize(@request, @response, @time = -1)
+    def initialize(@request, @response, @time = nil)
       @started_date_time = Time.now.to_rfc3339
     end
   end

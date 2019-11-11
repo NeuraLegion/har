@@ -19,7 +19,7 @@ module HAR
     property comment : String?
     property fragments : Array(String)?
 
-    def initialize(@method, @url, @http_version, @headers_size = -1, @body_size = -1)
+    def initialize(@method, @url, @http_version, @headers_size = nil, @body_size = nil)
       @cookies = Array(Cookie).new
       @headers = Array(Header).new
       @query_string = Array(QueryString).new

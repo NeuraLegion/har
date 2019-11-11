@@ -23,8 +23,8 @@ module HAR
       @http_version,
       @content,
       @redirect_url = nil,
-      @headers_size = -1,
-      @body_size = -1
+      @headers_size = nil,
+      @body_size = nil
     )
       @cookies = Array(Cookie).new
       @headers = Array(Header).new

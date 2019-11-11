@@ -1,3 +1,4 @@
+require "json"
 require "./har/**"
 
 # TODO: Write documentation for `Har`

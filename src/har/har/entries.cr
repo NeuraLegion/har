@@ -16,7 +16,7 @@ module HAR
     property comment : String?
 
     def initialize(@request, @response, @time = nil)
-      @started_date_time = Time.now.to_rfc3339
+      @started_date_time = Time.utc.to_rfc3339
     end
   end
 end

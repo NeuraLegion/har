@@ -9,7 +9,7 @@ module HAR
     property request : Request
     property response : Response
     property cache : Cache?
-    property timings : Timings | Array(String)?
+    property timings : Timings?
     @[JSON::Field(key: "serverIPAddress")]
     property server_ip_address : String?
     property connection : String?

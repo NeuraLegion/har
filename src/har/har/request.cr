@@ -20,7 +20,6 @@ module HAR
     @[JSON::Field(key: "bodySize")]
     property body_size : Int32?
     property comment : String?
-    property fragments : Array(String)?
 
     def self.new(http_request : HTTP::Request)
       request = Request.new(

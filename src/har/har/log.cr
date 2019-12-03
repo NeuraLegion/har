@@ -6,8 +6,8 @@ module HAR
     property creator : Creator
     property browser : Browser?
     property pages : Array(Pages)?
-    property comment : String?
     property entries : Array(Entries)
+    property comment : String?
 
     def initialize
       @entries = Array(Entries).new

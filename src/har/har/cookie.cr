@@ -8,7 +8,7 @@ module HAR
     property value : String
     property path : String?
     property domain : String?
-    property expires : String | Hash(String, String)?
+    property expires : String?
     @[JSON::Field(key: "httpOnly")]
     property http_only : Bool?
     property secure : Bool?

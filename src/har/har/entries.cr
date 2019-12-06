@@ -12,7 +12,7 @@ module HAR
 
     # Total elapsed time of the request in milliseconds. This is the sum of all
     # timings available in the timings object (i.e. not including `-1` values) .
-    property time : Int32 | Float32 | Float64?
+    property time : Float64?
 
     # Detailed info about the request.
     property request : Request

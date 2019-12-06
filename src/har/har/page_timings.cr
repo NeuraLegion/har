@@ -19,7 +19,7 @@ module HAR
     # since page load started (`page.startedDateTime`).
     # NOTE: Use `-1` if the timing does not apply to the current request.
     @[JSON::Field(key: "onLoad")]
-    property on_load : Int32 | Float32 | Float64?
+    property on_load : Float64?
 
     # A comment provided by the user or the application.
     property comment : String?

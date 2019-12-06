@@ -59,13 +59,14 @@ module HAR
     property comment : String?
 
     def self.new(http_response : HTTP::Client::Response)
-      content = Content.new(text: http_response.body.to_s)
-      content.mime_type = http_response.content_type
       response = Response.new(
         status: http_response.status_code,
         status_text: http_response.status_message.to_s,
         http_version: http_response.version,
-        content: content
+        content: Content.new(
+          text: http_response.body.to_s,
+          mime_type: http_response.content_type
+        )
       )
       response.http_cookies = http_response.cookies
       response.http_headers = http_response.headers

@@ -31,13 +31,15 @@ module HAR
     property comment : String?
 
     def self.new(http_cookie : HTTP::Cookie)
-      Cookie.new(name: http_cookie.name, value: http_cookie.value).tap do |cookie|
-        cookie.path = http_cookie.path
-        cookie.domain = http_cookie.domain
-        cookie.expires = http_cookie.expires.try &->Time::Format::RFC_3339.format(Time)
-        cookie.http_only = http_cookie.http_only
-        cookie.secure = http_cookie.secure
-      end
+      Cookie.new(
+        name: http_cookie.name,
+        value: http_cookie.value,
+        path: http_cookie.path,
+        domain: http_cookie.domain,
+        expires: http_cookie.expires.try(&.to_rfc3339),
+        http_only: http_cookie.http_only,
+        secure: http_cookie.secure
+      )
     end
 
     def initialize(

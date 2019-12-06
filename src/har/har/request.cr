@@ -55,11 +55,11 @@ module HAR
       request = Request.new(
         method: http_request.method,
         url: http_request.resource,
-        http_version: http_request.version
+        http_version: http_request.version,
+        post_data: PostData.new(text: http_request.body.to_s)
       )
       request.http_cookies = http_request.cookies
       request.http_headers = http_request.headers
-      request.post_data = PostData.new(text: http_request.body.to_s)
       request
     end
 

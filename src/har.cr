@@ -1,5 +1,5 @@
 require "json"
-require "./har/**"
+require "./har/*"
 
 # HTTP Archive v1.2
 #

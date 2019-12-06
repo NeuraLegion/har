@@ -4,14 +4,30 @@ module HAR
   class Cookie
     include JSON::Serializable
 
+    # The name of the cookie.
     property name : String
+
+    # The cookie value.
     property value : String
+
+    # The path pertaining to the cookie.
     property path : String?
+
+    # The host of the cookie.
     property domain : String?
+
+    # Cookie expiration time (ISO 8601 - `YYYY-MM-DDThh:mm:ss.sTZD`,
+    # e.g. `2009-07-24T19:20:30.123+02:00`).
     property expires : String?
+
+    # `true` if the cookie is HTTP only, `false` otherwise.
     @[JSON::Field(key: "httpOnly")]
     property http_only : Bool?
+
+    # `true` if the cookie was transmitted over ssl, `false` otherwise.
     property secure : Bool?
+
+    # A comment provided by the user or the application.
     property comment : String?
 
     def self.new(http_cookie : HTTP::Cookie)

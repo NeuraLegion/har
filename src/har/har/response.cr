@@ -3,23 +3,59 @@ require "mime/media_type"
 require "http"
 
 module HAR
+  # This object contains detailed info about the response.
+  #
+  # The total response size received can be computed as follows
+  # (if both values are available):
+  #
+  # ```
+  # total_size = entry.response.headers_size + entry.response.body_size
+  # ```
   class Response
     include JSON::Serializable
 
+    # Response status code.
     property status : Int32
+
+    # Response status description.
     @[JSON::Field(key: "statusText")]
     property status_text : String
+
+    # Response HTTP Version.
     @[JSON::Field(key: "httpVersion")]
     property http_version : String
+
+    # List of cookie objects.
     property cookies : Array(Cookie)
+
+    # List of header objects.
     property headers : Array(Header)
+
+    # Details about the response body.
     property content : Content
+
+    # Redirection target URL from the Location response header.
     @[JSON::Field(key: "redirectURL")]
     property redirect_url : String?
+
+    # Total number of bytes from the start of the HTTP response message until
+    # (and including) the double `CRLF` before the body.
+    #
+    # NOTE: Set to `-1` if the info is not available.
+    # NOTE: The size of received response-headers is computed only from headers
+    #       that are really received from the server. Additional headers appended by
+    #       the browser are not included in this number, but they appear in the list
+    #       of header objects.
     @[JSON::Field(key: "headersSize")]
     property headers_size : Int32?
+
+    # Size of the received response body in bytes.
+    # Set to `0` in case of responses coming from the cache (`304`).
+    # NOTE: Set to `-1` if the info is not available.
     @[JSON::Field(key: "bodySize")]
     property body_size : Int32?
+
+    # A comment provided by the user or the application.
     property comment : String?
 
     def self.new(http_response : HTTP::Client::Response)

@@ -2,23 +2,53 @@ require "uri"
 require "http"
 
 module HAR
+  # This object contains detailed info about performed request.
+  #
+  # The total request size sent can be computed as follows
+  # (if both values are available):
+  #
+  # ```
+  # total_size = entry.request.headers_size + entry.request.body_size
+  # ```
   class Request
     include JSON::Serializable
 
+    # Request method (`GET`, `POST`, ...).
     property method : String
+
+    # Absolute URL of the request (fragments are not included).
     property url : String
+
+    # Request HTTP Version.
     @[JSON::Field(key: "httpVersion")]
     property http_version : String
+
+    # List of cookie objects.
     property cookies : Array(Cookie)
+
+    # List of header objects.
     property headers : Array(Header)
+
+    # List of query parameter objects.
     @[JSON::Field(key: "queryString")]
     property query_string : Array(QueryString)
+
+    # Posted data info.
     @[JSON::Field(key: "postData")]
     property post_data : PostData?
+
+    # Total number of bytes from the start of the HTTP request message until
+    # (and including) the double `CRLF` before the body.
+    # NOTE: Set to `-1` if the info is not available.
     @[JSON::Field(key: "headersSize")]
     property headers_size : Int32?
+
+    # Size of the request body (`POST` data payload) in bytes.
+    # NOTE: Set to `-1` if the info is not available.
     @[JSON::Field(key: "bodySize")]
     property body_size : Int32?
+
+    # A comment provided by the user or the application.
     property comment : String?
 
     def self.new(http_request : HTTP::Request)

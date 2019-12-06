@@ -1,7 +1,13 @@
 require "json"
 require "./har/**"
 
-# TODO: Write documentation for `Har`
+# HTTP Archive v1.2
+#
+# One of the goals of the HTTP Archive format is to be flexible enough so, it can be adopted
+# across projects and various tools. This should allow effective processing and analyzing data
+# coming from various sources. Notice that resulting HAR file can contain privacy & security
+# sensitive data and user-agents should find some way to notify the user of this fact before
+# they transfer the file to anyone else.
 module HAR
   extend self
 

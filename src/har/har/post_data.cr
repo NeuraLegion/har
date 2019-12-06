@@ -1,11 +1,21 @@
 module HAR
+  # This object describes posted data, if any (embedded in `Request` object).
+  #
+  # NOTE: `text` and `params` fields are mutually exclusive.
   class PostData
     include JSON::Serializable
 
+    # Mime type of posted data.
     @[JSON::Field(key: "mimeType")]
     property mime_type : String?
+
+    # List of posted parameters (in case of URL encoded parameters).
     property params : Array(Param)?
+
+    # Plain text posted data.
     property text : String?
+
+    # A comment provided by the user or the application.
     property comment : String?
 
     def initialize(@text)

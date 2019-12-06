@@ -40,3 +40,4 @@ If there is a needed feature please open an issue.
 ## Contributors
 
 - [bararchy](https://github.com/bararchy) Bar Hofesh - creator, maintainer
+- [Sija](https://github.com/Sija) Sijawusz Pur Rahnama - contributor, maintainer

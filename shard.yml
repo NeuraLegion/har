@@ -3,6 +3,7 @@ version: 1.0.1
 
 authors:
   - Bar Hofesh <bar.hofesh@gmail.com>
+  - Sijawusz Pur Rahnama <sija@sija.pl>
 
 development_dependencies:
   ameba:

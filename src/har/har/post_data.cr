@@ -18,7 +18,12 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@text)
+    def initialize(
+      @mime_type = nil,
+      @params = nil,
+      @text = nil,
+      @comment = nil
+    )
     end
 
     def http_params : HTTP::Params

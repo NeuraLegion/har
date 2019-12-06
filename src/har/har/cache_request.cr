@@ -20,7 +20,13 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@last_access, @etag, @hit_count)
+    def initialize(
+      @expires = nil,
+      @last_access = nil,
+      @etag = nil,
+      @hit_count = nil,
+      @comment = nil
+    )
     end
   end
 end

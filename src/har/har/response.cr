@@ -73,15 +73,17 @@ module HAR
     end
 
     def initialize(
-      @status, @status_text,
+      @status,
+      @status_text,
       @http_version,
       @content,
       @redirect_url = nil,
+      @cookies = Array(Cookie).new,
+      @headers = Array(Header).new,
       @headers_size = nil,
-      @body_size = nil
+      @body_size = nil,
+      @comment = nil
     )
-      @cookies = Array(Cookie).new
-      @headers = Array(Header).new
     end
 
     def mime_type : MIME::MediaType?

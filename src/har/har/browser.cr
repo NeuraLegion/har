@@ -12,9 +12,11 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize
-      @name = "Crystal HAR"
-      @version = HAR::VERSION
+    def initialize(
+      @name = "Crystal HAR",
+      @version = HAR::VERSION,
+      @comment = nil
+    )
     end
   end
 end

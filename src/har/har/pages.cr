@@ -21,7 +21,13 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@started_date_time, @id, @title, @page_timings = nil)
+    def initialize(
+      @started_date_time = nil,
+      @id = nil,
+      @title = nil,
+      @page_timings = nil,
+      @comment = nil
+    )
     end
   end
 end

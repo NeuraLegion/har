@@ -40,7 +40,16 @@ module HAR
       end
     end
 
-    def initialize(@name, @value)
+    def initialize(
+      @name,
+      @value,
+      @path = nil,
+      @domain = nil,
+      @expires = nil,
+      @http_only = nil,
+      @secure = nil,
+      @comment = nil
+    )
     end
 
     def expires_at : Time?

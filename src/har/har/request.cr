@@ -63,10 +63,18 @@ module HAR
       request
     end
 
-    def initialize(@method, @url, @http_version, @headers_size = nil, @body_size = nil)
-      @cookies = Array(Cookie).new
-      @headers = Array(Header).new
-      @query_string = Array(QueryString).new
+    def initialize(
+      @method,
+      @url,
+      @http_version,
+      @cookies = Array(Cookie).new,
+      @headers = Array(Header).new,
+      @query_string = Array(QueryString).new,
+      @post_data = nil,
+      @headers_size = nil,
+      @body_size = nil,
+      @comment = nil
+    )
     end
 
     def uri : URI

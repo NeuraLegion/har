@@ -40,8 +40,18 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@request, @response, @time = nil)
-      @started_date_time = Time.utc.to_rfc3339
+    def initialize(
+      @request,
+      @response,
+      @pageref = nil,
+      @started_date_time = Time.utc.to_rfc3339,
+      @time = nil,
+      @cache = nil,
+      @timings = nil,
+      @server_ip_address = nil,
+      @connection = nil,
+      @comment = nil
+    )
     end
   end
 end

@@ -31,11 +31,14 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize
-      @entries = Array(Entries).new
-      @version = "1.2"
-      @creator = Creator.new
-      @browser = Browser.new
+    def initialize(
+      @version = "1.2",
+      @creator = Creator.new,
+      @browser = Browser.new,
+      @entries = Array(Entries).new,
+      @pages = nil,
+      @comment = nil
+    )
     end
   end
 end

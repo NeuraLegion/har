@@ -37,8 +37,14 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@text)
-      @size = @text.to_s.size
+    def initialize(
+      @size = nil,
+      @compression = nil,
+      @mime_type = nil,
+      @text = nil,
+      @encoding = nil,
+      @comment = nil
+    )
     end
   end
 end

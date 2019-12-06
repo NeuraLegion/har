@@ -53,5 +53,17 @@ module HAR
 
     # A comment provided by the user or the application.
     property comment : String?
+
+    def initialize(
+      @blocked = nil,
+      @dns = nil,
+      @connect = nil,
+      @send = nil,
+      @wait = nil,
+      @receive = nil,
+      @ssl = nil,
+      @comment = nil
+    )
+    end
   end
 end

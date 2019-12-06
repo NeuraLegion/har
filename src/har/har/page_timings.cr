@@ -23,5 +23,12 @@ module HAR
 
     # A comment provided by the user or the application.
     property comment : String?
+
+    def initialize(
+      @on_content_load = nil,
+      @on_load = nil,
+      @comment = nil
+    )
+    end
   end
 end

@@ -19,7 +19,13 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
-    def initialize(@name, @value = nil)
+    def initialize(
+      @name,
+      @value = nil,
+      @file_name = nil,
+      @content_type = nil,
+      @comment = nil
+    )
     end
   end
 end

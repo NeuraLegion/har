@@ -18,7 +18,7 @@ module HAR
 
     # Cookie expiration time (ISO 8601 - `YYYY-MM-DDThh:mm:ss.sTZD`,
     # e.g. `2009-07-24T19:20:30.123+02:00`).
-    property expires : String?
+    property expires : Time?
 
     # `true` if the cookie is HTTP only, `false` otherwise.
     @[JSON::Field(key: "httpOnly")]
@@ -36,7 +36,7 @@ module HAR
         value: http_cookie.value,
         path: http_cookie.path,
         domain: http_cookie.domain,
-        expires: http_cookie.expires.try(&.to_rfc3339),
+        expires: http_cookie.expires,
         http_only: http_cookie.http_only,
         secure: http_cookie.secure
       )
@@ -54,10 +54,6 @@ module HAR
     )
     end
 
-    def expires_at : Time?
-      expires.try { |time| Time.parse_rfc3339(time) }
-    end
-
     def http_only? : Bool
       !!http_only
     end
@@ -72,7 +68,7 @@ module HAR
         value: value,
         path: path || "/",
         domain: domain,
-        expires: expires_at,
+        expires: expires,
         http_only: http_only?,
         secure: secure?,
       )

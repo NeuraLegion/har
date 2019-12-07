@@ -8,7 +8,7 @@ module HAR
 
     # Date and time stamp of the request start (ISO 8601 - `YYYY-MM-DDThh:mm:ss.sTZD`).
     @[JSON::Field(key: "startedDateTime")]
-    property started_date_time : String
+    property started_date_time : Time
 
     # Total elapsed time of the request in milliseconds. This is the sum of all
     # timings available in the timings object (i.e. not including `-1` values) .
@@ -44,7 +44,7 @@ module HAR
       @request,
       @response,
       @pageref = nil,
-      @started_date_time = Time.utc.to_rfc3339,
+      @started_date_time = Time.utc,
       @time = nil,
       @cache = nil,
       @timings = nil,

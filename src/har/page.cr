@@ -1,5 +1,5 @@
 module HAR
-  class Pages
+  class Page
     include JSON::Serializable
 
     # Date and time stamp for the beginning of the page load

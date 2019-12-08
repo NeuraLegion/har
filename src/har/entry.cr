@@ -1,5 +1,5 @@
 module HAR
-  class Entries
+  class Entry
     include JSON::Serializable
 
     # Reference to the parent page.

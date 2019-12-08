@@ -1,7 +1,7 @@
 module HAR
   # This object represents the root of exported data.
   #
-  # There is one `Pages` object for every exported web page and one `Entry` object
+  # There is one `Page` object for every exported web page and one `Entry` object
   # for every HTTP request. In case when an HTTP trace tool isn't able to group
   # requests by a page, the `Log#pages` array is empty and individual requests
   # doesn't have a parent page.
@@ -19,14 +19,14 @@ module HAR
 
     # List of all exported (tracked) pages.
     # Leave out this field if the application does not support grouping by pages.
-    property pages : Array(Pages)?
+    property pages : Array(Page)?
 
     # This object represents an array with all exported (tracked) HTTP requests.
-    # Sorting entries by `Entries#started_date_time` (starting from the oldest) is preferred
+    # Sorting entries by `Entry#started_date_time` (starting from the oldest) is preferred
     # way how to export data since it can make importing faster.
     # However the reader application should always make sure the array is sorted
     # (if required for the import).
-    property entries : Array(Entries)
+    property entries : Array(Entry)
 
     # A comment provided by the user or the application.
     property comment : String?
@@ -35,7 +35,7 @@ module HAR
       @version = "1.2",
       @creator = Creator.new,
       @browser = Browser.new,
-      @entries = Array(Entries).new,
+      @entries = Array(Entry).new,
       @pages = nil,
       @comment = nil
     )

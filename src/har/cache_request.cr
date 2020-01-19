@@ -3,7 +3,7 @@ module HAR
     include JSON::Serializable
 
     # Expiration time of the cache entry.
-    property expires : String?
+    property expires : String? | Bool?
 
     # The last time the cache entry was opened.
     @[JSON::Field(key: "lastAccess")]

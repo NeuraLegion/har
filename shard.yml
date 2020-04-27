@@ -1,5 +1,5 @@
 name: har
-version: 1.1.1
+version: 1.1.2
 
 authors:
   - Bar Hofesh <bar.hofesh@gmail.com>
@@ -10,6 +10,6 @@ development_dependencies:
     github: crystal-ameba/ameba
     version: ~> 0.11.0
 
-crystal: 0.32.1
+crystal: 0.34.0
 
 license: MIT

@@ -40,6 +40,10 @@ module HAR
     # A comment provided by the user or the application.
     property comment : String?
 
+    # Optional websocket data
+    @[JSON::Field(key: "_webSocketMessages")]
+    property websocket_messages : Array(WebSocketMessage)?
+
     def initialize(
       @request,
       @response,
@@ -50,7 +54,8 @@ module HAR
       @timings = nil,
       @server_ip_address = nil,
       @connection = nil,
-      @comment = nil
+      @comment = nil,
+      @websocket_messages = nil
     )
     end
   end

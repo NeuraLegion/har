@@ -36,7 +36,7 @@ module HAR
         value: http_cookie.value,
         path: http_cookie.path,
         domain: http_cookie.domain,
-        expires: http_cookie.expires,
+        expires: http_cookie.expires.is_a?(Time) ? http_cookie.expires.as(Time) : nil,
         http_only: http_cookie.http_only,
         secure: http_cookie.secure
       )
@@ -68,7 +68,7 @@ module HAR
         value: value,
         path: path || "/",
         domain: domain,
-        expires: expires,
+        expires: expires.is_a?(Time) ? expires.as(Time) : nil,
         http_only: http_only?,
         secure: secure?,
       )

@@ -84,8 +84,8 @@ module HAR
     def body : String?
       return unless post_data = @post_data
 
-      text = post_data.text
-      return text if text && !text.empty?
+      text = post_data.text.presence
+      return text if text
 
       if post_data.mime_type.try &.["application/x-www-form-urlencoded"]?
         http_params = post_data.http_params

@@ -89,7 +89,7 @@ module HAR
 
     def mime_type : MIME::MediaType?
       mime_type = content.mime_type || http_headers["Content-Type"]?
-      if mime_type && !mime_type.empty?
+      if mime_type = mime_type.presence
         MIME::MediaType.parse(mime_type)
       end
     end

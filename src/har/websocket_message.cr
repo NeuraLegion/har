@@ -11,7 +11,7 @@ module HAR
     # Websocket message operation code.
     property opcode : Int32
 
-    # The data passed over the websocket message
+    # The data passed over the websocket message.
     property data : String
 
     def initialize(

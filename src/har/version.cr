@@ -1,3 +1,3 @@
 module HAR
-  VERSION = "1.1.0"
+  VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify }}
 end

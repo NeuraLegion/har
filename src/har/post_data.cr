@@ -26,8 +26,8 @@ module HAR
     )
     end
 
-    def http_params : HTTP::Params
-      HTTP::Params.new.tap do |http_params|
+    def http_params : URI::Params
+      URI::Params.new.tap do |http_params|
         params.try &.each do |param|
           next unless value = param.value
           http_params[param.name] = value
@@ -35,7 +35,7 @@ module HAR
       end
     end
 
-    def http_params=(http_params : HTTP::Params)
+    def http_params=(http_params : URI::Params)
       @params = params = Array(Param).new
       http_params.each do |key, value|
         params[key] = value

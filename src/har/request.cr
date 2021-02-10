@@ -123,8 +123,8 @@ module HAR
       end
     end
 
-    def query_string_http_params : HTTP::Params
-      HTTP::Params.new.tap do |http_params|
+    def query_string_http_params : URI::Params
+      URI::Params.new.tap do |http_params|
         query_string.each do |param|
           http_params[param.name] = param.value
         end

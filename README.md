@@ -1,4 +1,4 @@
-# har [![Build Status](https://travis-ci.com/NeuraLegion/har.svg?branch=master)](https://travis-ci.com/NeuraLegion/har) [![Releases](https://img.shields.io/github/release/NeuraLegion/har.svg)](https://github.com/NeuraLegion/har/releases) [![License](https://img.shields.io/github/license/NeuraLegion/har.svg)](https://github.com/NeuraLegion/har/blob/master/LICENSE)
+# har [![CI](https://github.com/NeuraLegion/har/actions/workflows/ci.yml/badge.svg)](https://github.com/NeuraLegion/har/actions/workflows/ci.yml) [![Releases](https://img.shields.io/github/release/NeuraLegion/har.svg)](https://github.com/NeuraLegion/har/releases) [![License](https://img.shields.io/github/license/NeuraLegion/har.svg)](https://github.com/NeuraLegion/har/blob/master/LICENSE)
 
 HAR parser for version 1.2
 

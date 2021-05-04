@@ -56,7 +56,7 @@ module HAR
         method: http_request.method,
         url: http_request.resource,
         http_version: http_request.version,
-        post_data: PostData.new(text: http_request.body.to_s)
+        post_data: PostData.new(text: http_request.body.try &.gets_to_end)
       )
       request.http_cookies = http_request.cookies
       request.http_headers = http_request.headers

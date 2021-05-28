@@ -10,7 +10,6 @@ development_dependencies:
     github: crystal-ameba/ameba
     version: ~> 0.14.0
 
-# TODO: Update to "~> 1" once the time comes.
-crystal: ">= 0.36, < 2"
+crystal: ">= 0.36"
 
 license: MIT

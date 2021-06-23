@@ -2,9 +2,20 @@ module HAR
   class Page
     include JSON::Serializable
 
+    # This module is used to skip ill-formed timestamps
+    module TimeConverter
+      def self.from_json(pull : JSON::PullParser)
+        Time::Format::ISO_8601_DATE_TIME.parse(pull.read_string) rescue nil
+      end
+
+      def self.to_json(value : Time, build : JSON::Builder)
+        build.string(Time::Format::ISO_8601_DATE_TIME.format(value))
+      end
+    end
+
     # Date and time stamp for the beginning of the page load
     # (ISO 8601 - `YYYY-MM-DDThh:mm:ss.sTZD`, e.g. `2009-07-24T19:20:30.45+01:00`).
-    @[JSON::Field(key: "startedDateTime")]
+    @[JSON::Field(key: "startedDateTime", converter: HAR::Page::TimeConverter)]
     property started_date_time : Time?
 
     # Unique identifier of a page within the `Log`.

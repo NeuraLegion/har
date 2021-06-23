@@ -5,8 +5,7 @@ module HAR
     # This module is used to skip ill-formed timestamps
     module TimeConverter
       def self.from_json(pull : JSON::PullParser)
-        Time::Format::ISO_8601_DATE_TIME.parse(pull.read_string)
-      rescue
+        Time::Format::ISO_8601_DATE_TIME.parse(pull.read_string) rescue nil
       end
 
       def self.to_json(value : Time, build : JSON::Builder)

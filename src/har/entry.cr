@@ -7,8 +7,8 @@ module HAR
     property pageref : String?
 
     # Date and time stamp of the request start (ISO 8601 - `YYYY-MM-DDThh:mm:ss.sTZD`).
-    @[JSON::Field(key: "startedDateTime")]
-    property started_date_time : Time
+    @[JSON::Field(key: "startedDateTime", converter: HAR::TimeConverter)]
+    property started_date_time : Time | String
 
     # Total elapsed time of the request in milliseconds. This is the sum of all
     # timings available in the timings object (i.e. not including `-1` values) .

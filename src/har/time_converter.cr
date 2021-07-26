@@ -2,6 +2,7 @@ module HAR
   # This module is used to skip ill-formed timestamps
   module TimeConverter
     Log = ::Log.for(self)
+
     def self.from_json(pull : JSON::PullParser)
       raw_string = pull.read_string
       begin

@@ -20,6 +20,7 @@ module HAR
     # e.g. `2009-07-24T19:20:30.123+02:00`).
     #
     # NOTE: `String` type has been found in Chrome exports.
+    @[JSON::Field(converter: HAR::TimeConverter)]
     property expires : Time | String?
 
     # `true` if the cookie is HTTP only, `false` otherwise.

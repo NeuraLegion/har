@@ -6,8 +6,8 @@ module HAR
       raw_string = pull.read_string
       begin
         return Time::Format::ISO_8601_DATE_TIME.parse(raw_string)
-      rescue
-        ::Log.for("HAR").error { "Unable to parse timestamp #{raw_string}" }
+      rescue ex
+        ::Log.warn(exception: ex) { "Unable to parse timestamp #{raw_string.inspect}" }
       end
       raw_string
     end

@@ -11,6 +11,6 @@ describe HAR do
   it "access some relevant data" do
     file = "#{__DIR__}/data/example.json"
     json = HAR.from_file(file)
-    pp json
+    Log.debug { json.pretty_inspect }
   end
 end

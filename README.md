@@ -29,6 +29,14 @@ json.entries
 Pretty much done.
 If there is a needed feature please open an issue.
 
+## Testing
+
+To run specs with debugging output you will have to set the `LOG_LEVEL` to debug.
+
+```crystal
+LOG_LEVEL=debug crystal spec
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/NeuraLegion/har/fork )

@@ -13,6 +13,8 @@ module HAR
   class Request
     include JSON::Serializable
 
+    Log = ::Log.for(self)
+
     # Request method (`GET`, `POST`, ...).
     property method : String
 
@@ -131,6 +133,13 @@ module HAR
       end
     end
 
+    private def cookie_to_http(cookie)
+      cookie.to_http_cookie
+    rescue ex
+      Log.error(exception: ex) { "Cookie is invalid: #{cookie.inspect}" }
+      nil
+    end
+
     def to_http_request : HTTP::Request
       request = HTTP::Request.new(
         method: method,
@@ -140,7 +149,9 @@ module HAR
         version: http_version
       )
       cookies.each do |cookie|
-        request.cookies << cookie.to_http_cookie
+        http_cookie = cookie_to_http(cookie)
+        next unless http_cookie
+        request.cookies << http_cookie
       end
       request
     end

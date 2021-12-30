@@ -149,9 +149,9 @@ module HAR
         version: http_version
       )
       cookies.each do |cookie|
-        http_cookie = cookie_to_http(cookie)
-        next unless http_cookie
-        request.cookies << http_cookie
+        request.cookies << cookie.to_http_cookie
+      rescue ex
+        Log.error(exception: ex) { "Invalid cookie: #{cookie.inspect}" }
       end
       request
     end

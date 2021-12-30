@@ -133,13 +133,6 @@ module HAR
       end
     end
 
-    private def cookie_to_http(cookie)
-      cookie.to_http_cookie
-    rescue ex
-      Log.error(exception: ex) { "Cookie is invalid: #{cookie.inspect}" }
-      nil
-    end
-
     def to_http_request : HTTP::Request
       request = HTTP::Request.new(
         method: method,

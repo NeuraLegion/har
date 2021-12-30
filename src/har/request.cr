@@ -144,7 +144,7 @@ module HAR
       cookies.each do |cookie|
         request.cookies << cookie.to_http_cookie
       rescue ex
-        Log.error(exception: ex) { "Invalid cookie: #{cookie.inspect}" }
+        Log.warn(exception: ex) { "Invalid cookie: #{cookie.inspect}" }
       end
       request
     end

@@ -13,6 +13,8 @@ module HAR
   class Request
     include JSON::Serializable
 
+    Log = ::Log.for(self)
+
     # Request method (`GET`, `POST`, ...).
     property method : String
 
@@ -141,6 +143,8 @@ module HAR
       )
       cookies.each do |cookie|
         request.cookies << cookie.to_http_cookie
+      rescue ex
+        Log.warn(exception: ex) { "Invalid cookie: #{cookie.inspect}" }
       end
       request
     end

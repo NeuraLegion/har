@@ -16,5 +16,9 @@ module HAR
     def self.to_json(value : Time, build : JSON::Builder)
       build.string(Time::Format::ISO_8601_DATE_TIME.format(value))
     end
+
+    def self.to_json(string : String, build : JSON::Builder)
+      build.string(Time::Format::ISO_8601_DATE_TIME.parse(string))
+    end
   end
 end

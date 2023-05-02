@@ -44,6 +44,10 @@ module HAR
     @[JSON::Field(key: "_webSocketMessages")]
     property websocket_messages : Array(WebSocketMessage)?
 
+    # Optional auth flow id data
+    @[JSON::Field(key: "_authFlowId")]
+    property auth_flow_id : String?
+
     def initialize(
       @request,
       @response,

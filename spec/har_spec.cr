@@ -25,4 +25,14 @@ describe HAR do
     json = HAR.from_file(file).to_json
     Log.debug { json.pretty_inspect }
   end
+
+  describe HAR::Entry do
+    it "can parse _authFlowId" do
+      file = "#{__DIR__}/data/example.json"
+      HAR.from_file(file).entries.compact_map(&.auth_flow_id).tap do |subj|
+        subj.size.should eq 1
+        subj.first.should eq "upmVm5iPkddvzY6RisT7Cr"
+      end
+    end
+  end
 end

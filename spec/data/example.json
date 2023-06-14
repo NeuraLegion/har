@@ -40,6 +40,10 @@
               "value": "no-cache"
             },
             {
+              "name": "cache-control",
+              "value": "test-cache"
+            },
+            {
               "name": "origin",
               "value": "https://www.websocket.org"
             },

@@ -25,4 +25,12 @@ describe HAR do
     json = HAR.from_file(file).to_json
     Log.debug { json.pretty_inspect }
   end
+
+  it "exports HTTP headers propperly" do
+    file = "#{__DIR__}/data/example.json"
+    har = HAR.from_file(file)
+    headers = har.entries.first.request.http_headers
+    headers.should be_a(HTTP::Headers)
+    headers["cache-control"].should eq("no-cache,test-cache")
+  end
 end

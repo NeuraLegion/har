@@ -98,7 +98,7 @@ module HAR
     def http_headers : HTTP::Headers
       HTTP::Headers.new.tap do |http_headers|
         headers.each do |header|
-          http_headers[header.name] = header.value
+          http_headers.add(header.name, header.value)
         end
       end
     end

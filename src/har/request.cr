@@ -13,6 +13,8 @@ module HAR
   class Request
     include JSON::Serializable
 
+    SUPPORTED_MIME_BODY = %w[application/x-www-form-urlencoded multipart/form-data]
+
     Log = ::Log.for(self)
 
     # Request method (`GET`, `POST`, ...).
@@ -89,7 +91,7 @@ module HAR
       text = post_data.text.presence
       return text if text
 
-      if post_data.mime_type.try &.["application/x-www-form-urlencoded"]?
+      if post_data.mime_type.try &.in?(SUPPORTED_MIME_BODY)
         http_params = post_data.http_params
         http_params.to_s unless http_params.empty?
       end

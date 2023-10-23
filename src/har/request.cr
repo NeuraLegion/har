@@ -91,7 +91,7 @@ module HAR
       text = post_data.text.presence
       return text if text
 
-      if post_data.mime_type.try &.in?(SUPPORTED_MIME_BODY)
+      if post_data.mime_type.try &.in?(FORMDATA_MIME_VALUES)
         http_params = post_data.http_params
         http_params.to_s unless http_params.empty?
       end

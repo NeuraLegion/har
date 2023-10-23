@@ -13,7 +13,7 @@ module HAR
   class Request
     include JSON::Serializable
 
-    SUPPORTED_MIME_BODY = %w[application/x-www-form-urlencoded multipart/form-data]
+    FORMDATA_MIME_VALUES = {"application/x-www-form-urlencoded", "multipart/form-data"}
 
     Log = ::Log.for(self)
 

@@ -33,4 +33,33 @@ describe HAR do
     headers.should be_a(HTTP::Headers)
     headers["cache-control"].should eq("no-cache,test-cache")
   end
+
+  it "doesn't merge request headers with the same name" do
+    std_request = HTTP::Request.new(
+      method: "GET",
+      resource: "/",
+      headers: HTTP::Headers{
+        "cache-control" => ["no-cache", "test-cache"],
+        "cookie"        => ["id=1", "userId=2; foo=bar"],
+      }
+    )
+    request = HAR::Request.new(std_request)
+    request.headers.size.should eq(4)
+    request.headers.count { |h| h.name == "cookie" }.should eq(2)
+  end
+
+  it "doesn't merge response headers with the same name" do
+    std_response = HTTP::Client::Response.new(
+      status_code: 200,
+      body: "Hello world",
+      headers: HTTP::Headers{
+        "content-type"   => "text/plain",
+        "content-length" => "11",
+        "set-cookie"     => ["foo=bar; domain=example.com", "userId=1; path=/"],
+      }
+    )
+    response = HAR::Response.new(std_response)
+    response.headers.size.should eq(4)
+    response.headers.count { |h| h.name == "set-cookie" }.should eq(2)
+  end
 end

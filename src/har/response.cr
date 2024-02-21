@@ -120,7 +120,9 @@ module HAR
     def http_headers=(http_headers : HTTP::Headers)
       headers.clear
       http_headers.each do |key, values|
-        headers << Header.new(name: key, value: values.join ", ")
+        values.each do |value|
+          headers << Header.new(name: key, value: value)
+        end
       end
     end
 

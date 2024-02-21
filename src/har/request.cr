@@ -150,6 +150,7 @@ module HAR
       rescue ex
         Log.warn(exception: ex) { "Invalid cookie: #{cookie.inspect}" }
       end
+      request.cookies.add_request_headers(request.headers)
       request
     end
   end
